@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Final.X
+PROJECTNAME=LabFinal
 
 # Active Configuration
 DEFAULTCONF=default
