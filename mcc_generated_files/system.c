@@ -50,6 +50,7 @@
 #include "interrupt_manager.h"
 #include "exceptions.h"
 #include "tmr2.h"
+#include "adc1.h"
 
 void SYSTEM_Initialize(void)
 {
@@ -58,6 +59,7 @@ void SYSTEM_Initialize(void)
     INTERRUPT_Initialize();
     USBDeviceInit();
     USBDeviceAttach();
+    ADC1_Initialize();
     TMR2_Initialize();
     RTCC_Initialize();
     INTERRUPT_GlobalEnable();
