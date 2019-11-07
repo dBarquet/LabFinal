@@ -11,8 +11,13 @@
 /*
  * 
  */
-int main(int argc, char** argv) {
-    int i;
-    return (EXIT_SUCCESS);
+int main(void) {
+   
+    //SYSTEM_Initialize();
+        while(1){
+            
+        }
+        return 0;
+
 }
 
