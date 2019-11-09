@@ -56,6 +56,370 @@
 */
 /**
   @Summary
+    Sets the GPIO pin, RA0, high using LATA0.
+
+  @Description
+    Sets the GPIO pin, RA0, high using LATA0.
+
+  @Preconditions
+    The RA0 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA0 high (1)
+    PWRKEY_SetHigh();
+    </code>
+
+*/
+#define PWRKEY_SetHigh()          ( LATASET = (1 << 0) )
+/**
+  @Summary
+    Sets the GPIO pin, RA0, low using LATA0.
+
+  @Description
+    Sets the GPIO pin, RA0, low using LATA0.
+
+  @Preconditions
+    The RA0 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA0 low (0)
+    PWRKEY_SetLow();
+    </code>
+
+*/
+#define PWRKEY_SetLow()           ( LATACLR = (1 << 0) )
+
+/**
+  @Summary
+    Sets a value to the GPIO pin.
+
+  @Description
+    Sets or Resets the GPIO pin, RA0, low or high using LATA0.
+
+  @Preconditions
+    The RA0 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    bool value; : value to be set to the GPIO pin.
+
+  @Example
+    <code>
+    // Set RA0 to low.
+    PWRKEY_SetValue(false);
+    </code>
+
+*/
+inline static void PWRKEY_SetValue(bool value)
+{
+  if(value)
+  {
+    PWRKEY_SetHigh();
+  }
+  else
+  {
+    PWRKEY_SetLow();
+  }
+}
+
+/**
+  @Summary
+    Toggles the GPIO pin, RA0, using LATA0.
+
+  @Description
+    Toggles the GPIO pin, RA0, using LATA0.
+
+  @Preconditions
+    The RA0 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RA0
+    PWRKEY_Toggle();
+    </code>
+
+*/
+#define PWRKEY_Toggle()           ( LATAINV = (1 << 0) )
+/**
+  @Summary
+    Reads the value of the GPIO pin, RA0.
+
+  @Description
+    Reads the value of the GPIO pin, RA0.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RA0
+    postValue = PWRKEY_GetValue();
+    </code>
+
+*/
+#define PWRKEY_GetValue()         PORTAbits.RA0
+/**
+  @Summary
+    Configures the GPIO pin, RA0, as an input.
+
+  @Description
+    Configures the GPIO pin, RA0, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA0 as an input
+    PWRKEY_SetDigitalInput();
+    </code>
+
+*/
+#define PWRKEY_SetDigitalInput()   ( TRISASET = (1 << 0) )
+/**
+  @Summary
+    Configures the GPIO pin, RA0, as an output.
+
+  @Description
+    Configures the GPIO pin, RA0, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA0 as an output
+    PWRKEY_SetDigitalOutput();
+    </code>
+
+*/
+#define PWRKEY_SetDigitalOutput()   ( TRISACLR = (1 << 0) )
+/**
+  @Summary
+    Sets the GPIO pin, RA1, high using LATA1.
+
+  @Description
+    Sets the GPIO pin, RA1, high using LATA1.
+
+  @Preconditions
+    The RA1 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA1 high (1)
+    RESET_SetHigh();
+    </code>
+
+*/
+#define RESET_SetHigh()          ( LATASET = (1 << 1) )
+/**
+  @Summary
+    Sets the GPIO pin, RA1, low using LATA1.
+
+  @Description
+    Sets the GPIO pin, RA1, low using LATA1.
+
+  @Preconditions
+    The RA1 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA1 low (0)
+    RESET_SetLow();
+    </code>
+
+*/
+#define RESET_SetLow()           ( LATACLR = (1 << 1) )
+
+/**
+  @Summary
+    Sets a value to the GPIO pin.
+
+  @Description
+    Sets or Resets the GPIO pin, RA1, low or high using LATA1.
+
+  @Preconditions
+    The RA1 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    bool value; : value to be set to the GPIO pin.
+
+  @Example
+    <code>
+    // Set RA1 to low.
+    RESET_SetValue(false);
+    </code>
+
+*/
+inline static void RESET_SetValue(bool value)
+{
+  if(value)
+  {
+    RESET_SetHigh();
+  }
+  else
+  {
+    RESET_SetLow();
+  }
+}
+
+/**
+  @Summary
+    Toggles the GPIO pin, RA1, using LATA1.
+
+  @Description
+    Toggles the GPIO pin, RA1, using LATA1.
+
+  @Preconditions
+    The RA1 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RA1
+    RESET_Toggle();
+    </code>
+
+*/
+#define RESET_Toggle()           ( LATAINV = (1 << 1) )
+/**
+  @Summary
+    Reads the value of the GPIO pin, RA1.
+
+  @Description
+    Reads the value of the GPIO pin, RA1.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RA1
+    postValue = RESET_GetValue();
+    </code>
+
+*/
+#define RESET_GetValue()         PORTAbits.RA1
+/**
+  @Summary
+    Configures the GPIO pin, RA1, as an input.
+
+  @Description
+    Configures the GPIO pin, RA1, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA1 as an input
+    RESET_SetDigitalInput();
+    </code>
+
+*/
+#define RESET_SetDigitalInput()   ( TRISASET = (1 << 1) )
+/**
+  @Summary
+    Configures the GPIO pin, RA1, as an output.
+
+  @Description
+    Configures the GPIO pin, RA1, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA1 as an output
+    RESET_SetDigitalOutput();
+    </code>
+
+*/
+#define RESET_SetDigitalOutput()   ( TRISACLR = (1 << 1) )
+/**
+  @Summary
     Sets the GPIO pin, RA10, high using LATA10.
 
   @Description
@@ -238,6 +602,188 @@ inline static void LED_CTRL_SetValue(bool value)
 #define LED_CTRL_SetDigitalOutput()   ( TRISACLR = (1 << 10) )
 /**
   @Summary
+    Sets the GPIO pin, RA11, high using LATA11.
+
+  @Description
+    Sets the GPIO pin, RA11, high using LATA11.
+
+  @Preconditions
+    The RA11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA11 high (1)
+    GPS_STATUS_SetHigh();
+    </code>
+
+*/
+#define GPS_STATUS_SetHigh()          ( LATASET = (1 << 11) )
+/**
+  @Summary
+    Sets the GPIO pin, RA11, low using LATA11.
+
+  @Description
+    Sets the GPIO pin, RA11, low using LATA11.
+
+  @Preconditions
+    The RA11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA11 low (0)
+    GPS_STATUS_SetLow();
+    </code>
+
+*/
+#define GPS_STATUS_SetLow()           ( LATACLR = (1 << 11) )
+
+/**
+  @Summary
+    Sets a value to the GPIO pin.
+
+  @Description
+    Sets or Resets the GPIO pin, RA11, low or high using LATA11.
+
+  @Preconditions
+    The RA11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    bool value; : value to be set to the GPIO pin.
+
+  @Example
+    <code>
+    // Set RA11 to low.
+    GPS_STATUS_SetValue(false);
+    </code>
+
+*/
+inline static void GPS_STATUS_SetValue(bool value)
+{
+  if(value)
+  {
+    GPS_STATUS_SetHigh();
+  }
+  else
+  {
+    GPS_STATUS_SetLow();
+  }
+}
+
+/**
+  @Summary
+    Toggles the GPIO pin, RA11, using LATA11.
+
+  @Description
+    Toggles the GPIO pin, RA11, using LATA11.
+
+  @Preconditions
+    The RA11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RA11
+    GPS_STATUS_Toggle();
+    </code>
+
+*/
+#define GPS_STATUS_Toggle()           ( LATAINV = (1 << 11) )
+/**
+  @Summary
+    Reads the value of the GPIO pin, RA11.
+
+  @Description
+    Reads the value of the GPIO pin, RA11.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RA11
+    postValue = GPS_STATUS_GetValue();
+    </code>
+
+*/
+#define GPS_STATUS_GetValue()         PORTAbits.RA11
+/**
+  @Summary
+    Configures the GPIO pin, RA11, as an input.
+
+  @Description
+    Configures the GPIO pin, RA11, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA11 as an input
+    GPS_STATUS_SetDigitalInput();
+    </code>
+
+*/
+#define GPS_STATUS_SetDigitalInput()   ( TRISASET = (1 << 11) )
+/**
+  @Summary
+    Configures the GPIO pin, RA11, as an output.
+
+  @Description
+    Configures the GPIO pin, RA11, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA11 as an output
+    GPS_STATUS_SetDigitalOutput();
+    </code>
+
+*/
+#define GPS_STATUS_SetDigitalOutput()   ( TRISACLR = (1 << 11) )
+/**
+  @Summary
     Sets the GPIO pin, RA13, high using LATA13.
 
   @Description
@@ -418,6 +964,188 @@ inline static void BTN3_SetValue(bool value)
 
 */
 #define BTN3_SetDigitalOutput()   ( TRISACLR = (1 << 13) )
+/**
+  @Summary
+    Sets the GPIO pin, RA6, high using LATA6.
+
+  @Description
+    Sets the GPIO pin, RA6, high using LATA6.
+
+  @Preconditions
+    The RA6 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA6 high (1)
+    GPS_RX_SetHigh();
+    </code>
+
+*/
+#define GPS_RX_SetHigh()          ( LATASET = (1 << 6) )
+/**
+  @Summary
+    Sets the GPIO pin, RA6, low using LATA6.
+
+  @Description
+    Sets the GPIO pin, RA6, low using LATA6.
+
+  @Preconditions
+    The RA6 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA6 low (0)
+    GPS_RX_SetLow();
+    </code>
+
+*/
+#define GPS_RX_SetLow()           ( LATACLR = (1 << 6) )
+
+/**
+  @Summary
+    Sets a value to the GPIO pin.
+
+  @Description
+    Sets or Resets the GPIO pin, RA6, low or high using LATA6.
+
+  @Preconditions
+    The RA6 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    bool value; : value to be set to the GPIO pin.
+
+  @Example
+    <code>
+    // Set RA6 to low.
+    GPS_RX_SetValue(false);
+    </code>
+
+*/
+inline static void GPS_RX_SetValue(bool value)
+{
+  if(value)
+  {
+    GPS_RX_SetHigh();
+  }
+  else
+  {
+    GPS_RX_SetLow();
+  }
+}
+
+/**
+  @Summary
+    Toggles the GPIO pin, RA6, using LATA6.
+
+  @Description
+    Toggles the GPIO pin, RA6, using LATA6.
+
+  @Preconditions
+    The RA6 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RA6
+    GPS_RX_Toggle();
+    </code>
+
+*/
+#define GPS_RX_Toggle()           ( LATAINV = (1 << 6) )
+/**
+  @Summary
+    Reads the value of the GPIO pin, RA6.
+
+  @Description
+    Reads the value of the GPIO pin, RA6.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RA6
+    postValue = GPS_RX_GetValue();
+    </code>
+
+*/
+#define GPS_RX_GetValue()         PORTAbits.RA6
+/**
+  @Summary
+    Configures the GPIO pin, RA6, as an input.
+
+  @Description
+    Configures the GPIO pin, RA6, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA6 as an input
+    GPS_RX_SetDigitalInput();
+    </code>
+
+*/
+#define GPS_RX_SetDigitalInput()   ( TRISASET = (1 << 6) )
+/**
+  @Summary
+    Configures the GPIO pin, RA6, as an output.
+
+  @Description
+    Configures the GPIO pin, RA6, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA6 as an output
+    GPS_RX_SetDigitalOutput();
+    </code>
+
+*/
+#define GPS_RX_SetDigitalOutput()   ( TRISACLR = (1 << 6) )
 /**
   @Summary
     Sets the GPIO pin, RA7, high using LATA7.
@@ -964,6 +1692,188 @@ inline static void BTN2_SetValue(bool value)
 
 */
 #define BTN2_SetDigitalOutput()   ( TRISBCLR = (1 << 15) )
+/**
+  @Summary
+    Sets the GPIO pin, RC12, high using LATC12.
+
+  @Description
+    Sets the GPIO pin, RC12, high using LATC12.
+
+  @Preconditions
+    The RC12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC12 high (1)
+    GPS_TX_SetHigh();
+    </code>
+
+*/
+#define GPS_TX_SetHigh()          ( LATCSET = (1 << 12) )
+/**
+  @Summary
+    Sets the GPIO pin, RC12, low using LATC12.
+
+  @Description
+    Sets the GPIO pin, RC12, low using LATC12.
+
+  @Preconditions
+    The RC12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC12 low (0)
+    GPS_TX_SetLow();
+    </code>
+
+*/
+#define GPS_TX_SetLow()           ( LATCCLR = (1 << 12) )
+
+/**
+  @Summary
+    Sets a value to the GPIO pin.
+
+  @Description
+    Sets or Resets the GPIO pin, RC12, low or high using LATC12.
+
+  @Preconditions
+    The RC12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    bool value; : value to be set to the GPIO pin.
+
+  @Example
+    <code>
+    // Set RC12 to low.
+    GPS_TX_SetValue(false);
+    </code>
+
+*/
+inline static void GPS_TX_SetValue(bool value)
+{
+  if(value)
+  {
+    GPS_TX_SetHigh();
+  }
+  else
+  {
+    GPS_TX_SetLow();
+  }
+}
+
+/**
+  @Summary
+    Toggles the GPIO pin, RC12, using LATC12.
+
+  @Description
+    Toggles the GPIO pin, RC12, using LATC12.
+
+  @Preconditions
+    The RC12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RC12
+    GPS_TX_Toggle();
+    </code>
+
+*/
+#define GPS_TX_Toggle()           ( LATCINV = (1 << 12) )
+/**
+  @Summary
+    Reads the value of the GPIO pin, RC12.
+
+  @Description
+    Reads the value of the GPIO pin, RC12.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RC12
+    postValue = GPS_TX_GetValue();
+    </code>
+
+*/
+#define GPS_TX_GetValue()         PORTCbits.RC12
+/**
+  @Summary
+    Configures the GPIO pin, RC12, as an input.
+
+  @Description
+    Configures the GPIO pin, RC12, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC12 as an input
+    GPS_TX_SetDigitalInput();
+    </code>
+
+*/
+#define GPS_TX_SetDigitalInput()   ( TRISCSET = (1 << 12) )
+/**
+  @Summary
+    Configures the GPIO pin, RC12, as an output.
+
+  @Description
+    Configures the GPIO pin, RC12, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC12 as an output
+    GPS_TX_SetDigitalOutput();
+    </code>
+
+*/
+#define GPS_TX_SetDigitalOutput()   ( TRISCCLR = (1 << 12) )
 /**
   @Summary
     Sets the GPIO pin, RC5, high using LATC5.
