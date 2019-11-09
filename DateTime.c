@@ -13,9 +13,9 @@
 #include <string.h>
 
 struct tm TimeInit;
-struct tm CurrentTime;
 uint8_t Entered_Data [254];
 uint8_t largo;
+
 /* TODO:  Include other files here if needed. */
 
 bool set_Year(){
@@ -148,6 +148,7 @@ else{
     return true;
 }
 }
+
 
 
 

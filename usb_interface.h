@@ -24,7 +24,8 @@ extern "C" {
         CONSULTAR_HORA,
         AGREGAR_PLANTA,
         SETEAR_UMBRALES_COLORES,
-        INGRESAR_TELEFONO
+        INGRESAR_TELEFONO,
+        VALOR_SENSOR
         
 }interface_state_t;
     
@@ -39,6 +40,7 @@ extern "C" {
  void USB_Interface();   
  bool mostrar(char *data);
  void menu();
+ bool mostrar_Varios(char *data0,char *data1,char *data2,char *data3,char *data4);
     
     
     

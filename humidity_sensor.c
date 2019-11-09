@@ -29,7 +29,8 @@ bool ADconv (){
 } 
 
 uint16_t  HumidityGetValue(){
-     conversion= ADC1_ConversionResultGet()/17.05;   
+     conversion= ADC1_ConversionResultGet()/17.05;  
+     return conversion;
 }
 
 

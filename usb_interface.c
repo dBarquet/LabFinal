@@ -10,15 +10,25 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
+#include "DateTime.h"
+#include "humidity_sensor.h"
 
 
 // Section: Functions                                               
 /* ************************************************************************** */
 uint8_t Entered_Data [254];
 uint8_t largo;
+uint16_t conversion;
 static interface_state_t ESTADO = MENU;
 static uint8_t menu_st=0;
 static int selection=0;
+static uint8_t mostrar_st=0;
+char H [100];
+char M [100];
+char sens [100];
+struct tm CurrentTime;
+
+
 
 void USB_Interface(){
     
@@ -36,15 +46,33 @@ void USB_Interface(){
         if(DateTime_Set()==true){
         ESTADO=MENU;
         }           
-        break;   
+        break;  
+        
+        case(CONSULTAR_HORA):
+            CDCTxService( );
+            RTCC_TimeGet(&CurrentTime);
+                int HH=CurrentTime.tm_hour;
+                int MM=CurrentTime.tm_min;
+                if(mostrar_Varios("\nLa hora es: ",itoa(H,HH,10),":",itoa(M,MM,10),"\n")==true){
+                    ESTADO=MENU;
+                }      
+        break;
+        
+        case(VALOR_SENSOR):
+            if(ADconv()==true){
+               conversion=HumidityGetValue();
+               mostrar(itoa(sens,conversion,10));    
+            }
+            
     }
-    
 }
+    
+
 
 void menu(){
     switch(menu_st){
         case(0):
-                if(mostrar("Menu: \n 1- Fijar hora \n 2- Consultar hora \n 3- Agregar planta \n 4- Setear colores para umbrales de humedad \n 5- Ingresar telefono ")==true){
+                if(mostrar("Menu: \n 1- Fijar hora \n 2- Consultar hora \n 3- Agregar planta \n 4- Setear colores para umbrales de humedad \n 5- Ingresar telefono \n 6- Valor Potenciometro ")==true){
                 selection=0;
                 menu_st=1;
                 }
@@ -77,6 +105,9 @@ void menu(){
                     case(5):   
                         ESTADO= INGRESAR_TELEFONO;
                         break;
+                    case(6):   
+                        ESTADO= VALOR_SENSOR;
+                        break;
                 }
     }
     
@@ -93,6 +124,40 @@ bool mostrar(char *data) {
 }
         else return false;
         }
+
+bool mostrar_Varios(char *data0,char *data1,char *data2,char *data3,char *data4){
+    switch(mostrar_st){
+        case 0: if(mostrar(data0)==true){
+            mostrar_st=1;
+            return false;
+        }
+        break;
+        
+        case 1: if(mostrar(data1)==true){
+            mostrar_st=2;
+            return false;
+        }
+        break;
+        
+        case 2: if(mostrar(data2)==true){
+            mostrar_st=3;
+            return false;
+        }
+        break;
+        
+        case 3: if(mostrar(data3)==true){
+            mostrar_st=4;
+            return false;
+        }
+        break;
+        
+        case 4: if(mostrar(data4)==true){
+            mostrar_st=0;
+            return true;   
+        }
+        break;
+    } 
+}
 
 /* *****************************************************************************
  End of File
