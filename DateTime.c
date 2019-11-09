@@ -15,6 +15,7 @@
 struct tm TimeInit;
 uint8_t Entered_Data [254];
 uint8_t largo;
+static uint8_t state=0;
 
 /* TODO:  Include other files here if needed. */
 
@@ -82,7 +83,7 @@ bool set_Minute(){
 
 
 bool DateTime_Set(){
-                static uint8_t state=0;
+                
                 CDCTxService();
                 switch(state){
                 case(0):
@@ -136,10 +137,12 @@ bool DateTime_Set(){
                 case(9):
                     if(set_Minute()==true){
                     RTCC_TimeSet(&TimeInit);
-                    state=10;;
-                    break;
+                    state=10;
                     }
-            } 
+                    break;
+            
+
+}
 if(state != 10){
     return false;
 }    
