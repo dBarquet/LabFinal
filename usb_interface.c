@@ -38,13 +38,13 @@ void USB_Interface(){
     
     switch(ESTADO){
         case(MENU):
-            menu_st=0;
             menu();
             break;
             
         case(FIJAR_HORA):
         if(DateTime_Set()==true){
         ESTADO=MENU;
+        menu_st=0;
         }           
         break;  
         
@@ -61,8 +61,10 @@ void USB_Interface(){
         case(VALOR_SENSOR):
             if(ADconv()==true){
                conversion=HumidityGetValue();
-               mostrar(itoa(sens,conversion,10));    
+               mostrar(itoa(sens,conversion,10)); 
+               ESTADO=MENU;
             }
+        break;
             
     }
 }
