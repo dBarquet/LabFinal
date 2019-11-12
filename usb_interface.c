@@ -21,6 +21,7 @@ uint8_t largo;
 uint16_t conversion;
 static interface_state_t ESTADO = MENU;
 static uint8_t menu_st=0;
+static uint8_t sens_st=0;
 static int selection=0;
 static uint8_t mostrar_st=0;
 char H [100];
@@ -34,10 +35,13 @@ void USB_Interface(){
     
     CDCTxService();
     memset(Entered_Data,0,sizeof(Entered_Data));
+    memset(sens,0,sizeof(sens));
+    conversion=0;
     largo=254;
     
     switch(ESTADO){
         case(MENU):
+            //selection=0;
             menu();
             break;
             
@@ -54,15 +58,32 @@ void USB_Interface(){
                 int HH=CurrentTime.tm_hour;
                 int MM=CurrentTime.tm_min;
                 if(mostrar_Varios("\nLa hora es: ",itoa(H,HH,10),":",itoa(M,MM,10),"\n")==true){
+                    menu_st=0;
                     ESTADO=MENU;
+                    
                 }      
         break;
         
         case(VALOR_SENSOR):
-            if(ADconv()==true){
-               conversion=HumidityGetValue();
-               mostrar(itoa(sens,conversion,10)); 
-               ESTADO=MENU;
+            switch(sens_st){
+                case(0):
+                    ADC1_ChannelSelect(ADC1_POTN);
+                    ADC1_Start();
+                    sens_st=1;                
+                    ADC1_Stop();
+                    break;
+                case(1):     
+                    
+                    if(ADC1_IsConversionComplete()==AD1CON1bits.DONE){ 
+                       conversion= ADC1_ConversionResultGet()/17.05;
+                       mostrar(itoa(sens,conversion,10)); 
+             
+                       menu_st=0;
+                       ESTADO=MENU;
+                       sens_st=0;
+                       
+                    }
+                    break;
             }
         break;
             
@@ -164,3 +185,4 @@ bool mostrar_Varios(char *data0,char *data1,char *data2,char *data3,char *data4)
 /* *****************************************************************************
  End of File
  */
+
