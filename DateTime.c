@@ -11,6 +11,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
+#include "mcc_generated_files/tmr2.h"
+
 
 struct tm TimeInit;
 uint8_t Entered_Data [254];
@@ -151,6 +153,7 @@ else{
     return true;
 }
 }
+
 
 
 
