@@ -34,7 +34,11 @@
       <itemPath>usb_interface.h</itemPath>
       <itemPath>DateTime.h</itemPath>
       <itemPath>GPS.h</itemPath>
+<<<<<<< HEAD
       <itemPath>sim.h</itemPath>
+=======
+      <itemPath>WS2812.h</itemPath>
+>>>>>>> 5fdc74aae74a31bc15e876f0dd3b9bff4d42ae63
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -68,7 +72,11 @@
       <itemPath>usb_interface.c</itemPath>
       <itemPath>DateTime.c</itemPath>
       <itemPath>GPS.c</itemPath>
+<<<<<<< HEAD
       <itemPath>sim.c</itemPath>
+=======
+      <itemPath>WS2812.c</itemPath>
+>>>>>>> 5fdc74aae74a31bc15e876f0dd3b9bff4d42ae63
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
