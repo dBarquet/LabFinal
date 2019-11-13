@@ -18,4 +18,5 @@ mcc_generated_files/usb/usb.h  \
  mcc_generated_files/interrupt_manager.h  \
 mcc_generated_files/exceptions.h  \
  mcc_generated_files/watchdog.h  \
-mcc_generated_files/adc1.h 
+mcc_generated_files/adc1.h  \
+WS2812.h 

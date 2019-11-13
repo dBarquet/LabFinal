@@ -21,8 +21,11 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 #include "WS2812.h"
-#include "../../mcc_generated_files/pin_manager.h"
-#include "../../mcc_generated_files/interrupt_manager.h"
+#include "mcc_generated_files/pin_manager.h"
+#include "mcc_generated_files/interrupt_manager.h" 
+#include <stdint.h>
+#include <stdbool.h>
+#include <stdio.h>
 
 
 /* ************************************************************************** */
@@ -34,6 +37,33 @@ const ws2812_t WHITE    = {255, 255, 255};
 const ws2812_t RED      = {255, 0, 0};
 const ws2812_t GREEN    = {0, 255, 0};
 const ws2812_t BLUE     = {0, 0, 255};
+const ws2812_t BLACK     = {0, 0, 0};
+
+ws2812_t vectorLEDs[8];
+
+
+void ApagarLEDs(){
+    uint8_t i;
+    for (i=1;i<sizeof(vectorLEDs);i=i++){
+        vectorLEDs[i]=BLACK;
+        
+    }
+    WS2812_send(vectorLEDs, sizeof(vectorLEDs) );
+    
+}
+
+void Green_SetHigh(){
+    uint8_t i;
+    for (i=1;i<sizeof(vectorLEDs);i++){
+        vectorLEDs[i]=BLUE;    
+    }
+    WS2812_send(vectorLEDs, sizeof(vectorLEDs) );
+   
+}
+
+
+
+
 
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -43,31 +73,6 @@ const ws2812_t BLUE     = {0, 0, 255};
 
 /* ************************************************************************** */
 
-/** 
-  @Function
-    static uint32_t WS2812_bitFlip( uint8_t p_b )
-
-  @Summary
-    Invierte el orden de los bits en un byte.
-
-  @Description
-    Invierte el orden de los bits en un byte.
-    <p>
-    Se utilizan rotaciones para ser m�s eficiente
-    <p>
-
-  @Precondition
-    None
-
-  @Parameters
-    @param p_b Byte a ser modificado.
-
-  @Returns
-    uint32_t Devuelve el valor del byte en 32 bits
-
-  @Remarks
-    None
- */
 
 static uint32_t WS2812_bitFlip( uint8_t p_b )
 {

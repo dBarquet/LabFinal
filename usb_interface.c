@@ -63,7 +63,7 @@ void USB_Interface(){
                     
                 }      
         break;
-        // probando cosos ocsokcokdsl
+     
         case(VALOR_SENSOR):
             switch(sens_st){
                 case(0):

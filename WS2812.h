@@ -32,10 +32,19 @@
 /* Section: Constants                                                         */
 /* ************************************************************************** */
 /* ************************************************************************** */
+typedef struct
+{
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+}ws2812_t;
+
+
 extern const ws2812_t WHITE;
 extern const ws2812_t RED;
 extern const ws2812_t GREEN;
 extern const ws2812_t BLUE;
+extern const ws2812_t BLACK;
 
 
 // *****************************************************************************
@@ -60,12 +69,6 @@ extern const ws2812_t BLUE;
   @Remarks
     None
  */
-typedef struct
-{
-    uint8_t r;
-    uint8_t g;
-    uint8_t b;
-}ws2812_t;
 
 
 // *****************************************************************************
@@ -99,6 +102,8 @@ typedef struct
     None.
  */
 void WS2812_send( ws2812_t *p_leds, uint8_t p_length );
+void ApagarLEDs();
+void Green_SetHigh();
 
 #endif /* _WS2812_H */
 
