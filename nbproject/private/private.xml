@@ -2,20 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/GPS.c</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/GPS.h</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/mcc_generated_files/mcc.c</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/main.c</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/mcc_generated_files/tmr2.h</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/mcc_generated_files/tmr2.c</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/mcc_generated_files/uart1.c</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/DateTime.c</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/mcc_generated_files/uart1.h</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/sim.c</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/mcc_generated_files/pin_manager.h</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/sim.h</file>
-            <file>file:/C:/Users/Diego/Desktop/CATO/Embebidos/pum/Nueva%20carpeta/LabFinal/mcc_generated_files/pin_manager.c</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
