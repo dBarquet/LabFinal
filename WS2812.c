@@ -55,7 +55,7 @@ void ApagarLEDs(){
 void Green_SetHigh(){
     uint8_t i;
     for (i=1;i<sizeof(vectorLEDs);i++){
-        vectorLEDs[i]=BLUE;    
+        vectorLEDs[i]=WHITE;    
     }
     WS2812_send(vectorLEDs, sizeof(vectorLEDs) );
    
