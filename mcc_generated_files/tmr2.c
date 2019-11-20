@@ -212,6 +212,27 @@ void TMR2_SoftwareCounterClear(void)
     tmr2_obj.count = 0; 
 }
 
+bool delayMs( uint32_t p_delay )
+{
+	static uint8_t delayState = 0;
+	static uint32_t startValue;
+	
+	switch( delayState )
+	{
+		case 0:
+			startValue = tmr2_obj.count;
+			delayState = 1;
+			break;
+		case 1:
+			if( tmr2_obj.count >= (startValue+p_delay) )
+			{
+				return true;
+			}
+			break;
+	}
+	return false;
+}
+
 /**
  End of File
 */

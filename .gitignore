@@ -1,8 +1,8 @@
 build
 debug
 dist
-private
-*.mk
-Makefile-genesis.properties
-Package-default.bash
-Makefile-local-default.mk
+nbproject/private
+nbproject/*.mk
+nbproject/Makefile-genesis.properties
+nbproject/Package-default.bash
+nbproject/Makefile-local-default.mk
