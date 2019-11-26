@@ -22,6 +22,13 @@ uint16_t conversion;
 static interface_state_t ESTADO = MENU;
 static uint8_t menu_st=0;
 static uint8_t sens_st=0;
+static uint8_t set_st=0;
+int umbral_seco;
+int umbral_optimo;
+int umbral_saturado;
+int color_seco;
+int color_optimo;
+int color_optimo;
 static int selection=0;
 static uint8_t mostrar_st=0;
 char H [100];
@@ -86,6 +93,100 @@ void USB_Interface(){
                     break;
             }
         break;
+        
+        case(SETEAR_UMBRALES_COLORES):
+            switch(set_st){
+                case(0):
+                    if(mostrar(" Ingrese valor de humedad de suelo SECO (entre 0Cb-60Cb): ")==true){
+                    set_st=1;
+                    }
+                break;
+                
+                case(1):
+                    if(USBGetDeviceState( )>=CONFIGURED_STATE){
+                        if(getsUSBUSART( Entered_Data, largo )!=0 ){
+                        umbral_seco=atoi(Entered_Data);
+                        memset(Entered_Data,0,sizeof(Entered_Data));
+                        set_st=2;
+                        break;
+                        }
+                    }
+                    else
+                break;
+                    
+                case(2):
+                    if(mostrar(" Ingrese color para indicar suelo SECO: \n 1- Rojo \n 2- Blanco \n 3- Verde \n 4- Azul ")==true){
+                    set_st=3;
+                    }
+                break;
+                
+                case(3):
+                        if(USBGetDeviceState( )>=CONFIGURED_STATE){
+                        if(getsUSBUSART( Entered_Data, largo )!=0 ){
+                        color_seco=atoi(Entered_Data);
+                        memset(Entered_Data,0,sizeof(Entered_Data));
+                        set_st=4;
+                        break;
+                        }
+                    }
+                    else
+                break;
+                        
+                case(4):
+                        if(mostrar(" Ingrese valor de humedad de suelo SATURADO (entre 0Cb-60Cb): ")==true){
+                        set_st=5;
+                        }
+                break;
+                
+                case(5):
+                    if(USBGetDeviceState( )>=CONFIGURED_STATE){
+                        if(getsUSBUSART( Entered_Data, largo )!=0 ){
+                        umbral_saturado=atoi(Entered_Data);
+                        memset(Entered_Data,0,sizeof(Entered_Data));
+                        set_st=6;
+                        break;
+                        }
+                    }
+                    else
+                break;
+                    
+                case(6):
+                    if(mostrar(" Ingrese color para indicar suelo SATURADO: \n 1- Rojo \n 2- Blanco \n 3- Verde \n 4- Azul ")==true){
+                    set_st=7;
+                    }
+                break;
+                            
+                case(7):
+                        if(USBGetDeviceState( )>=CONFIGURED_STATE){
+                        if(getsUSBUSART( Entered_Data, largo )!=0 ){
+                        color_seco=atoi(Entered_Data);
+                        memset(Entered_Data,0,sizeof(Entered_Data));
+                        set_st=8;
+                        break;
+                        }
+                    }
+                    else
+                break;
+                        
+                case(8):
+                    if(mostrar(" Ingrese color para indicar suelo OPTIMO: \n 1- Rojo \n 2- Blanco \n 3- Verde \n 4- Azul ")==true){
+                    set_st=9;
+                    }
+                break;
+                
+                case(9):
+                        if(USBGetDeviceState( )>=CONFIGURED_STATE){
+                        if(getsUSBUSART( Entered_Data, largo )!=0 ){
+                        color_seco=atoi(Entered_Data);
+                        memset(Entered_Data,0,sizeof(Entered_Data));
+                        set_st=0;
+                        break;
+                        }
+                    }
+                    else
+                break;
+        }
+        break;
             
     }
 }
@@ -95,7 +196,7 @@ void USB_Interface(){
 void menu(){
     switch(menu_st){
         case(0):
-                if(mostrar("Menu: \n 1- Fijar hora \n 2- Consultar hora \n 3- Agregar planta \n 4- Setear colores para umbrales de humedad \n 5- Ingresar telefono \n 6- Valor Potenciometro ")==true){
+                if(mostrar("Menu: \n 1- Fijar hora \n 2- Consultar hora \n 3- Agregar planta \n 4- Setear umbrales de humedad y colores \n 5- Ingresar telefono \n 6- Consultar valor sensor ")==true){
                 selection=0;
                 menu_st=1;
                 }
