@@ -30,6 +30,14 @@ extern "C" {
         bool some_flag;
 
     } example_struct_t;
+    
+typedef enum
+{
+                SECO,
+                SATURADO,
+                OPTIMO
+        
+}plant_state;
 
 
     // *****************************************************************************
@@ -37,7 +45,6 @@ extern "C" {
     // Section: Interface Functions
     // *****************************************************************************
 
-    bool ADconv();
     uint16_t HumidityGetValue();
 
     /* Provide C++ Compatibility */

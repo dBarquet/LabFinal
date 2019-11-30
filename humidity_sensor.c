@@ -16,21 +16,26 @@
 
 
 uint16_t conversion;
+static uint8_t sens_st=0;
 
-bool ADconv (){
-    
-    ADC1_ChannelSelect(ADC1_POTN);
-    ADC1_Start();
-    if (ADC1_IsConversionComplete()==true){
-    return true;   
-    }
-    else 
-        return false;
-} 
 
 uint16_t  HumidityGetValue(){
-     conversion= ADC1_ConversionResultGet()/17.05;  
-     return conversion;
+
+    switch(sens_st){
+                case(0):
+                    ADC1_ChannelSelect(ADC1_POTN);
+                    ADC1_Start();
+                    sens_st=1;                
+                    ADC1_Stop();
+                    break;
+                case(1):     
+                    
+                    if(ADC1_IsConversionComplete()==AD1CON1bits.DONE){ 
+                       conversion= ADC1_ConversionResultGet()/17.05;
+                       sens_st=0;
+                       return conversion;                  
+                    }
+                    break;
 }
 
 
