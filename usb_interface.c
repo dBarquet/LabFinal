@@ -21,7 +21,7 @@ uint8_t largo;
 uint16_t conversion;
 static interface_state_t ESTADO = MENU;
 static uint8_t menu_st=0;
-static uint8_t sens_st=0;
+//static uint8_t sens_st=0;
 static uint8_t set_st=0;
 int umbral_seco;
 int umbral_optimo;
@@ -72,6 +72,11 @@ void USB_Interface(){
         break;
      
         case(VALOR_SENSOR):
+            uint16_t conv=HumidityGetValue();
+            mostrar(conv);
+            menu_st=0;
+            ESTADO=MENU;
+            /*
             switch(sens_st){
                 case(0):
                     ADC1_ChannelSelect(ADC1_POTN);
@@ -87,11 +92,10 @@ void USB_Interface(){
              
                        menu_st=0;
                        ESTADO=MENU;
-                       sens_st=0;
-                       
+                       sens_st=0;        
                     }
                     break;
-            }
+            }*/
         break;
         
         case(SETEAR_UMBRALES_COLORES):
@@ -177,9 +181,11 @@ void USB_Interface(){
                 case(9):
                         if(USBGetDeviceState( )>=CONFIGURED_STATE){
                         if(getsUSBUSART( Entered_Data, largo )!=0 ){
-                        color_seco=atoi(Entered_Data);
+                        color_optimo=atoi(Entered_Data);
                         memset(Entered_Data,0,sizeof(Entered_Data));
                         set_st=0;
+                        menu_st=0;
+                        ESTADO=MENU;
                         break;
                         }
                     }
