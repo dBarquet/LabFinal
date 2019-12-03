@@ -70,7 +70,6 @@ OBJECTFILES=${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o ${OBJECTDIR
 SOURCEFILES=mcc_generated_files/usb/usb_device_events.c mcc_generated_files/usb/usb_device.c mcc_generated_files/usb/usb_descriptors.c mcc_generated_files/usb/usb_device_cdc.c mcc_generated_files/system.c mcc_generated_files/clock.c mcc_generated_files/exceptions.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/rtcc.c mcc_generated_files/tmr2.c mcc_generated_files/adc1.c mcc_generated_files/uart1.c main.c humidity_sensor.c usb_interface.c DateTime.c GPS.c sim.c WS2812.c
 
 
-
 CFLAGS=
 ASFLAGS=
 LDLIBSOPTIONS=
