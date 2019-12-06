@@ -10,7 +10,8 @@
 #include <xc.h>
 #include <sys/attribs.h>     //MACROS ISRs
 #include "mcc_generated_files/mcc.h"
-#include "WS2812.h" 
+#include "WS2812.h"
+#include "humidity_sensor.h"
 /*
  * 
  */

@@ -20,4 +20,5 @@ mcc_generated_files/usb/usb.h  \
  mcc_generated_files/uart1.h  \
 mcc_generated_files/interrupt_manager.h  \
  mcc_generated_files/exceptions.h  \
-WS2812.h 
+WS2812.h  \
+humidity_sensor.h 
