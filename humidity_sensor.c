@@ -37,6 +37,7 @@ uint16_t  HumidityGetValue(){
                     }
                     break;
 }
+}
 
 
 

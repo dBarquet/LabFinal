@@ -35,6 +35,7 @@ char H [100];
 char M [100];
 char sens [100];
 struct tm CurrentTime;
+uint16_t conv;
 
 
 
@@ -72,8 +73,8 @@ void USB_Interface(){
         break;
      
         case(VALOR_SENSOR):
-            uint16_t conv=HumidityGetValue();
-            mostrar(conv);
+            conv=HumidityGetValue();
+            mostrar(itoa(sens,conv,10));
             menu_st=0;
             ESTADO=MENU;
             /*
