@@ -33,11 +33,12 @@
 /* Section: File Scope or Global Data                                         */
 /* ************************************************************************** */
 /* ************************************************************************** */
-const ws2812_t WHITE    = {255, 255, 255};
-const ws2812_t RED      = {255, 0, 0};
-const ws2812_t GREEN    = {0, 255, 0};
-const ws2812_t BLUE     = {0, 0, 255};
+const ws2812_t WHITE    = {25, 25, 25};
+const ws2812_t RED      = {25, 0, 0};
+const ws2812_t GREEN    = {0, 25, 0};
+const ws2812_t BLUE     = {0, 0, 25};
 const ws2812_t BLACK     = {0, 0, 0};
+const ws2812_t YELLOW     = {25, 25, 0};
 
 ws2812_t vectorLEDs[8];
 
