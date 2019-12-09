@@ -110,6 +110,14 @@
 void TMR2_Initialize (void);
 
 
+
+
+typedef struct 
+{
+	 uint8_t state;
+	 uint32_t startValue;
+
+} ut_tmrDelay_t;
 /**
   @Summary
     Updates 16-bit timer value

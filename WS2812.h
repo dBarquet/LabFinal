@@ -104,7 +104,8 @@ extern const ws2812_t BLACK;
 void WS2812_send( ws2812_t *p_leds, uint8_t p_length );
 void ApagarLEDs();
 void Green_SetHigh();
-
+void Red_SetHigh();
+void Yellow_SetHigh();
 #endif /* _WS2812_H */
 
 /* *****************************************************************************

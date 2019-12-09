@@ -46,6 +46,7 @@ typedef enum
     // *****************************************************************************
 
     uint16_t HumidityGetValue();
+    uint16_t  Hum();
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

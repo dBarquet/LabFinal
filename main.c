@@ -19,60 +19,71 @@ int main(void) {
     
     SYSTEM_Initialize();
     static plant_state p_state= OPTIMO;
+    static uint16_t humidity=40;
+    ut_tmrDelay_t timer1;
+    timer1.state = 0;
     
         while(1){
+            
+        if (UT_delayDs(&timer1,1)==true){
+        
+        LEDA_SetHigh(); 
+        humidity=HumidityGetValue();
+        }
         
         if(USBGetDeviceState( )>=CONFIGURED_STATE){
         USB_Interface();
         } 
-        
+        //humidity=Hum();
         switch(p_state){
             case(OPTIMO):
                 Green_SetHigh(); 
-                if(HumidityGetValue()<10){
-                    p_state=SECO;
+                //humidity=HumidityGetValue();
+                if(humidity<10){
+                    p_state=SATURADO;
                     break;
                 }
                 else
-                    if(HumidityGetValue()>20){
-                        p_state=SATURADO;
+                    if(humidity>30){
+                        p_state=SECO;
                         break;
                     }
-                if(LEDA_GetValue()==1 && HumidityGetValue()<15 ){
+                if(LEDA_GetValue()==1 && humidity<15 ){
                     LEDA_SetLow();
                 }
                 break;
             case(SECO):
-                
-                if(HumidityGetValue()>=10 && HumidityGetValue()<=20){
+                //humidity=HumidityGetValue();
+                if(humidity>=10 && humidity<=30){
                     p_state=OPTIMO;
                     break;
                 }
-                else if(HumidityGetValue()<10){
+                else if(humidity<10){
                         p_state=SATURADO;
                         break;
                     }
-                else if(HumidityGetValue()>=30 && HumidityGetValue()<=40){
+                else if(humidity>=30 && humidity<=40){
                  Yellow_SetHigh();
                 }
-                else if(HumidityGetValue()>=41){
+                else if(humidity>=41){
                  Red_SetHigh();
                 }
                     
                 break;
             case(SATURADO):
-                if(HumidityGetValue()>=10 && HumidityGetValue()<=20){
+                //humidity=HumidityGetValue();
+                if(humidity>=10 && humidity<=30){
                     p_state=OPTIMO;
                     break;
                 }
-                else if(HumidityGetValue()<10){
+                else if(humidity>30){
                     p_state=SECO;
                     break;
                 }
-                else if(HumidityGetValue()>=6 && HumidityGetValue()<=9){
+                else if(humidity>=6 && humidity<=9){
                  Yellow_SetHigh();
                 }
-                else if(HumidityGetValue()>=0 && HumidityGetValue()<=5){
+                else if(humidity>=0 && humidity<=5){
                  Red_SetHigh();
                 }
                 break;

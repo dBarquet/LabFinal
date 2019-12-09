@@ -74,7 +74,7 @@ void Red_SetHigh(){
 void Yellow_SetHigh(){
     uint8_t i;
     for (i=1;i<sizeof(vectorLEDs);i++){
-        vectorLEDs[i]=BLUE;    
+        vectorLEDs[i]=YELLOW;    
     }
     WS2812_send(vectorLEDs, sizeof(vectorLEDs) );
    
