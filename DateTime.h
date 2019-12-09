@@ -39,6 +39,8 @@ bool set_Month();
 bool set_Day();
 bool set_Hour();
 bool set_Minute();
+bool UT_delayDs(ut_tmrDelay_t* p_timer, uint8_t p_ds);
+bool delayMs( uint32_t p_delay );
 
 
     /* Provide C++ Compatibility */

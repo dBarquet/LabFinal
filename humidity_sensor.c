@@ -19,7 +19,7 @@
 uint16_t conversion;
 static uint8_t sens_st=0;
 
-
+/*
 uint16_t  HumidityGetValue(){
 
     switch(sens_st){
@@ -39,6 +39,30 @@ uint16_t  HumidityGetValue(){
                     }
                     break;
 }
+}
+ 
+*/
+uint16_t  HumidityGetValue(){ 
+    //if  (IsConversionDone()==true){
+    conversion= ADC1_ConversionResultGet()/17.05;
+    return conversion; 
+    //}
+}
+bool IsConversionDone(){
+    switch(sens_st){
+                case(0):                   
+                    ADC1_ChannelSelect(ADC1_POTN);
+                    ADC1_Start();
+                    sens_st=1;                
+                    ADC1_Stop();                  
+                    return false;
+                    
+                case(1):                         
+                    if(ADC1_IsConversionComplete()==AD1CON1bits.DONE){ 
+                       sens_st=0;
+                       return true;                  
+                    }
+    }
 }
 
 uint16_t  Hum(){

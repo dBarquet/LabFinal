@@ -76,6 +76,7 @@
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
+      <itemPath>MyConfigLab3.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

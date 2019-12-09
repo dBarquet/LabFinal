@@ -211,51 +211,6 @@ void TMR2_SoftwareCounterClear(void)
 {
     tmr2_obj.count = 0; 
 }
-// AGREGUÉ ACA DE LA ANTO Y DEFINÍ ut_tmrDelay_t
-
-
-
-
-bool UT_delayDs(ut_tmrDelay_t* p_timer, uint32_t p_ds){
-    switch ( p_timer->state ) {
-        case (0):
-            p_timer -> startValue = TMR2_SoftwareCounterGet ();
-            p_timer -> state = 1;
-            return false;
-            break;
-        case (1): 
-            if (TMR2_SoftwareCounterGet () >= p_timer->startValue + p_ds){
-                p_timer->state = 0;
-                return true;
-            }
-            else 
-                return false;
-            break;
-    }
-}
-//
-
-
-bool delayMs( uint32_t p_delay )
-{
-	static uint8_t delayState = 0;
-	static uint32_t startValue=0;
-	
-	switch( delayState )
-	{
-		case 0:
-			startValue = tmr2_obj.count;
-			delayState = 1;
-			break;
-		case 1:
-			if( tmr2_obj.count >= (startValue+p_delay) )
-			{
-				return true;
-			}
-			break;
-	}
-	return false;
-}
 
 /**
  End of File

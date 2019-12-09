@@ -74,9 +74,11 @@ void USB_Interface(){
      
         case(VALOR_SENSOR):
             conv=HumidityGetValue();
-            mostrar(itoa(sens,conv,10));
+            
+            if(mostrar(itoa(sens,conv,10))==true){
             menu_st=0;
             ESTADO=MENU;
+            }
             /*
             switch(sens_st){
                 case(0):
