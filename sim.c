@@ -122,7 +122,7 @@ switch(SIMstate) {
                 }
         break;
         
-    case (11):
+    case (12):
         strcpy(txBuffer,'AT+CGNSSEQ="RMC"\r');
         UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));
         SIMstate=13;
@@ -139,7 +139,7 @@ switch(SIMstate) {
         break;
         
        
-    case (13):
+    case (14):
         break;
 }}
 

@@ -24,8 +24,8 @@ int main(void) {
     timer1.state = 0;
     
         while(1){
-            
-        if (UT_delayDs(&timer1,1)==true){
+        
+        if (UT_delayDs(&timer1,10)==true) {
         
         LEDA_SetHigh(); 
         humidity=HumidityGetValue();
