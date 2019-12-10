@@ -22,8 +22,10 @@ int main(void) {
     SYSTEM_Initialize();
     static volatile plant_state p_state= OPTIMO;
     uint16_t humidity;
-    
+    uint8_t rxBuffer [254];
+    uint8_t txBuffer [254];
     uint8_t timer1;
+    uint8_t largo=100;
     ut_tmrDelay_t* ptimer1;
     ptimer1=&timer1;
    // ptimer1->startValue = 0;
@@ -32,6 +34,20 @@ int main(void) {
 
     
         while(1){
+        
+      //  iniciarSIM808();
+        memset(txBuffer,0,sizeof(txBuffer));
+        memset(rxBuffer,0,sizeof(rxBuffer));
+        if(USBGetDeviceState( )>=CONFIGURED_STATE){
+            if(getsUSBUSART( txBuffer, largo )!=0 ){
+			
+            	UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));
+            }
+        }
+        if (UART1_ReadBuffer ( rxBuffer , 1 ) == 0){
+            mostrar(rxBuffer);
+        }
+
             
         if (UT_delayDs(ptimer1,1)==true) {
         LEDA_SetHigh(); 

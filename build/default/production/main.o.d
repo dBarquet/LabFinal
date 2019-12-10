@@ -21,10 +21,5 @@ mcc_generated_files/usb/usb.h  \
  mcc_generated_files/watchdog.h  \
 mcc_generated_files/adc1.h  \
 WS2812.h  \
-<<<<<<< HEAD
-humidity_sensor.h  \
-sim.h 
-=======
  humidity_sensor.h  \
-DateTime.h 
->>>>>>> 4f5d61350aa6637a4ccf03817d7e3a68c52efdab
+sim.h 

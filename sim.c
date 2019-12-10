@@ -63,7 +63,7 @@ switch(SIMstate) {
         memset(txBuffer,0,sizeof(txBuffer));
         strcpy(txBuffer,"\r\nOK\r\n");
             if ((memcmp(rxBuffer, txBuffer, strlen (txBuffer))) == 0) {
-            SIMstate=6;
+            SIMstate=14;
             }
             else
                 if ( UT_delayDs(ptimer2, 10 ) == true) {
@@ -71,7 +71,7 @@ switch(SIMstate) {
                 }
         break;
         
-    case (6):
+ /*   case (6):
         memset(txBuffer,0,sizeof(txBuffer));
         strcpy(txBuffer, "AT+CPIN?\r");
         UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));
@@ -157,9 +157,10 @@ switch(SIMstate) {
                 }
         break;
         
-       
+      */ 
     case (14):
       SIMok=true;
+      LEDA_SetHigh(); 
         break;
 }}
 
