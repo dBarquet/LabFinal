@@ -78,7 +78,7 @@ typedef struct _TMR_OBJ_STRUCT
     /* Timer Elapsed */
     volatile bool           timerElapsed;
     /*Software Counter value*/
-    volatile uint8_t        count;
+    volatile uint32_t        count;
 
 } TMR_OBJ;
 
@@ -202,7 +202,7 @@ bool TMR2_GetElapsedThenClear(void)
     return status;
 }
 
-int TMR2_SoftwareCounterGet(void)
+uint32_t TMR2_SoftwareCounterGet(void)
 {
     return tmr2_obj.count;
 }
@@ -211,10 +211,6 @@ void TMR2_SoftwareCounterClear(void)
 {
     tmr2_obj.count = 0; 
 }
-// AGREGUÉ ACA DE LA ANTO Y DEFINÍ ut_tmrDelay_t
-
-
-
 
 bool UT_delayDs(ut_tmrDelay_t* p_timer, uint32_t p_ds){
     switch ( p_timer->state ) {
@@ -222,15 +218,14 @@ bool UT_delayDs(ut_tmrDelay_t* p_timer, uint32_t p_ds){
             p_timer -> startValue = TMR2_SoftwareCounterGet ();
             p_timer -> state = 1;
             return false;
-            break;
         case (1): 
-            if (TMR2_SoftwareCounterGet () >= p_timer->startValue + p_ds){
+            if (TMR2_SoftwareCounterGet () >= (p_timer->startValue + p_ds)){
                 p_timer->state = 0;
                 return true;
             }
-            else 
+            else {          
                 return false;
-            break;
+            }
     }
 }
 //
@@ -244,11 +239,11 @@ bool delayMs( uint32_t p_delay )
 	switch( delayState )
 	{
 		case 0:
-			startValue = tmr2_obj.count;
+			startValue = TMR2_SoftwareCounterGet ();
 			delayState = 1;
 			break;
 		case 1:
-			if( tmr2_obj.count >= (startValue+p_delay) )
+			if( TMR2_SoftwareCounterGet () >= (startValue+p_delay) )
 			{
 				return true;
 			}
@@ -256,7 +251,6 @@ bool delayMs( uint32_t p_delay )
 	}
 	return false;
 }
-
 /**
  End of File
 */

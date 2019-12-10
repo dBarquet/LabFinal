@@ -153,10 +153,47 @@ else{
     return true;
 }
 }
+/*
+bool UT_delayDs(ut_tmrDelay_t* p_timer, uint8_t p_ds){
+    switch ( p_timer->state ) {
+        case (0):
+            p_timer -> startValue = TMR2_SoftwareCounterGet ();
+            p_timer -> state = 1;
+            return false;
+        case (1): 
+            if (TMR2_SoftwareCounterGet () >= (p_timer->startValue + p_ds)){
+                p_timer->state = 0;
+                return true;}
+            else {          
+                return false;
+            }
+    }
+}
+//
 
 
+bool delayMs( uint32_t p_delay )
+{
+	static uint8_t delayState = 0;
+	static uint32_t startValue=0;
+	
+	switch( delayState )
+	{
+		case 0:
+			startValue = TMR2_SoftwareCounterGet ();
+			delayState = 1;
+			break;
+		case 1:
+			if( TMR2_SoftwareCounterGet () >= (startValue+p_delay) )
+			{
+				return true;
+			}
+			break;
+	}
+	return false;
+}
 
-
+*/
 
 
 
