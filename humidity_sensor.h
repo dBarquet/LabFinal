@@ -47,7 +47,8 @@ typedef enum
 
     uint16_t HumidityGetValue();
     bool IsConversionDone();
-    uint16_t  Hum();
+    plant_state Change_PlantState(plant_state p_state, uint16_t humidity);
+
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

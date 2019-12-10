@@ -106,6 +106,9 @@ void ApagarLEDs();
 void Green_SetHigh();
 void Red_SetHigh();
 void Yellow_SetHigh();
+void Blue_SetHigh();
+void White_SetHigh();
+void Plant_State_Color(ws2812_t Good_color,ws2812_t Bad_color,ws2812_t No_to_Bad_color,uint16_t humidity);
 #endif /* _WS2812_H */
 
 /* *****************************************************************************

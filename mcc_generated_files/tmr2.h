@@ -208,7 +208,7 @@ void TMR2_Counter16BitSet ( uint16_t value );
 
 uint16_t TMR2_Counter16BitGet( void );
 
-bool UT_delayDs(ut_tmrDelay_t* p_timer, uint8_t p_ds);
+bool UT_delayDs(ut_tmrDelay_t* p_timer, uint32_t p_ds);
 
 bool delayMs( uint32_t p_delay );
 
@@ -309,7 +309,7 @@ bool TMR2_GetElapsedThenClear(void);
     Refer to the example of TMR2_Initialize();
 */
 
-int TMR2_SoftwareCounterGet(void);
+uint32_t TMR2_SoftwareCounterGet(void);
 
 /**
   @Summary

@@ -49,7 +49,6 @@ void USB_Interface(){
     
     switch(ESTADO){
         case(MENU):
-            //selection=0;
             menu();
             break;
             
@@ -73,32 +72,16 @@ void USB_Interface(){
         break;
      
         case(VALOR_SENSOR):
-            conv=HumidityGetValue();
+            if(IsConversionDone()==true){
+                    conv=HumidityGetValue();
+            
             
             if(mostrar(itoa(sens,conv,10))==true){
             menu_st=0;
             ESTADO=MENU;
             }
-            /*
-            switch(sens_st){
-                case(0):
-                    ADC1_ChannelSelect(ADC1_POTN);
-                    ADC1_Start();
-                    sens_st=1;                
-                    ADC1_Stop();
-                    break;
-                case(1):     
-                    
-                    if(ADC1_IsConversionComplete()==AD1CON1bits.DONE){ 
-                       conversion= ADC1_ConversionResultGet()/17.05;
-                       mostrar(itoa(sens,conversion,10)); 
-             
-                       menu_st=0;
-                       ESTADO=MENU;
-                       sens_st=0;        
-                    }
-                    break;
-            }*/
+            }
+
         break;
         
         case(SETEAR_UMBRALES_COLORES):
@@ -122,7 +105,7 @@ void USB_Interface(){
                 break;
                     
                 case(2):
-                    if(mostrar(" Ingrese color para indicar suelo SECO: \n 1- Rojo \n 2- Blanco \n 3- Verde \n 4- Azul ")==true){
+                    if(mostrar(" Ingrese color para indicar suelo SECO: \n 1- Rojo \n 2- Blanco \n 3- Verde \n 4- Azul \n 5- Amarillo ")==true){
                     set_st=3;
                     }
                 break;
