@@ -23,6 +23,7 @@
 #include "WS2812.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/interrupt_manager.h" 
+#include "humidity_sensor.h"
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -71,7 +72,7 @@ void Red_SetHigh(){
    
 }
 
-void Yellow_SetHigh(){
+void Blue_SetHigh(){
     uint8_t i;
     for (i=1;i<sizeof(vectorLEDs);i++){
         vectorLEDs[i]=BLUE;    
@@ -79,6 +80,64 @@ void Yellow_SetHigh(){
     WS2812_send(vectorLEDs, sizeof(vectorLEDs) );
    
 }
+
+
+void Yellow_SetHigh(){
+    uint8_t i;
+    for (i=1;i<sizeof(vectorLEDs);i++){
+        vectorLEDs[i]=YELLOW;    
+    }
+    WS2812_send(vectorLEDs, sizeof(vectorLEDs) );
+   
+}
+
+void White_SetHigh(){
+    uint8_t i;
+    for (i=1;i<sizeof(vectorLEDs);i++){
+        vectorLEDs[i]=WHITE;    
+    }
+    WS2812_send(vectorLEDs, sizeof(vectorLEDs) );
+   
+}
+
+void RGB_SetHigh(ws2812_t color){
+    if(color.r==BLUE.r && color.g==BLUE.g && color.b==BLUE.b){
+        Blue_SetHigh();
+    }
+    else  if(color.r==GREEN.r && color.g==GREEN.g && color.b==GREEN.b){
+        Green_SetHigh();
+    }
+    else  if(color.r==YELLOW.r && color.g==YELLOW.g && color.b==YELLOW.b){
+        Yellow_SetHigh();
+    }
+    else  if(color.r==RED.r && color.g==RED.g && color.b==RED.b){
+        Red_SetHigh();
+    }
+    else  if(color.r==WHITE.r && color.g==WHITE.g && color.b==WHITE.b){
+        White_SetHigh();
+    }    
+}
+
+void Plant_State_Color(ws2812_t Good_color,ws2812_t Bad_color,ws2812_t No_to_Bad_color,uint16_t humidity){
+    
+                if(humidity>=41){
+                RGB_SetHigh(Bad_color);
+                }
+                else if(humidity>=31 && humidity<=40){
+                 RGB_SetHigh(No_to_Bad_color);
+                }
+                else if(humidity>=10 && humidity<=30){
+                RGB_SetHigh(Good_color);    
+                }
+                else if(humidity>=6 && humidity<=9){
+                 RGB_SetHigh(No_to_Bad_color);
+                }
+                else if(humidity<=5){
+                 RGB_SetHigh(Bad_color);
+                }  
+    }
+    
+
 
 
 

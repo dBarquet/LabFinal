@@ -20,112 +20,115 @@ switch(SIMstate) {
 	case (0):
 		PWRKEY_SetDigitalOutput();
 		PWRKEY_SetLow();
+        
+    case (1):
 		if( delayMs( 1000 ) == true ) {
 			PWRKEY_SetDigitalInput();          
-			SIMstate=1;
+			SIMstate=2;
 		}
+    SIMstate=1;
 	break;
     
-	case (1):
-		if( delayMs( 2000 ) == true && GPS_STATUS_SetHigh()){
-			SIMstate=2;
+	case (2):
+		if( delayMs( 2000 ) == true && GPS_STATUS_GetValue()){
+			SIMstate=3;
 			}
 	break;
 	
-	case (2):
+	case (3):
         if (UART1_IsRxReady()) {
             UART1_WriteBuffer ( "A" ,  strlen ("A"));
-			SIMstate=3;
+			SIMstate=4;
         }
     break;
         
-    case (3):
+    case (4):
         if ( delayMs( 4000 ) == true) {
             UART1_WriteBuffer ( "AT\r" ,  strlen ("AT\r"));
-            SIMstate=4;
+            SIMstate=5;
         }
     break;            
     
-    case (4):
+    case (5):
         if (UART1_ReadBuffer ( "\r\nOK\r\n" , strlen("\r\nOK\r\n") ) == 0){
-            SIMstate=5;
+            SIMstate=6;
             }
             else
                 if ( delayMs( 1000 ) == true) {
-                 SIMstate=2;
+                 SIMstate=3;
                 }
         break;
         
-    case (5):
+    case (6):
         strcpy(txBuffer, "AT+CPIN?\r");
         UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));
-        SIMstate=6;
+        SIMstate=7;
         break;
     
-    case (6):
+    case (7):
         if (UART1_ReadBuffer ( "\r\nOK\r\n" , strlen("\r\nOK\r\n") ) == 0){
-            SIMstate=7;
+            SIMstate=8;
         }
         else
             if ( delayMs( 1000 ) == true) {
-                 SIMstate=5;
+                 SIMstate=6;
                 }
         break;
         
-    case (7):
+    case (8):
         if (UART1_ReadBuffer ( &rxBuffer , strlen(rxBuffer) ) == 0){
             memset(txBuffer,0,sizeof(txBuffer));
             strcpy(txBuffer,"READY");
                     if ((memcmp(rxBuffer, txBuffer, 5)) == 0) {
-                        SIMstate=9;
+                        SIMstate=10;
                         strcpy(txBuffer,"AT+COPS=1,2,\"74801\"\r");
                         UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));
                     }
                     else
                         strcpy(txBuffer,"SIM PIN");
                         if ((memcmp(rxBuffer, txBuffer, 5)) == 0){
-                            SIMstate=8;
+                            SIMstate=9;
                             strcpy(txBuffer,"AT+CPIN=1234\r");
                             UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));                        
                         }
         }
         break;
     
-    case (8):
+    case (9):
         if (UART1_ReadBuffer ( "\r\nOK\r\n" , strlen("\r\nOK\r\n") ) == 0){
-            SIMstate=9;
+            SIMstate=10;
             strcpy(txBuffer,"AT+COPS=1,2,\"74801\"\r");
             UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));
             }
         else                                        //Ver si este achique esta bien
                 if ( delayMs( 1000 ) == true) {
-                 SIMstate=6;
+                 SIMstate=7;
                 }
         break;
 	
-    case (9):
+    case (10):
         strcpy(txBuffer,"AT+CGNSPWR=1\r");
         UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));
-        SIMstate=10;
+        SIMstate=11;
         break;
         //Ver si aca se pone achique de cuando le mandas la prendida a recibir el ok
-    case (10):
+    case (11):
         if (UART1_ReadBuffer ( "\r\nOK\r\n" , strlen("\r\nOK\r\n") ) == 0){
-            SIMstate=11;
+            SIMstate=12;
         }
         else
                 if ( delayMs( 1000 ) == true) {
-                 SIMstate=9;
+                 SIMstate=11;
                 }
         break;
         
-    case (11):
+    case (12):
         strcpy(txBuffer,'AT+CGNSSEQ="RMC"\r');
         UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));
-        SIMstate=12;
+        SIMstate=13;
         break;
         
-    case (12):
+    case (13):
         if (UART1_ReadBuffer ( "\r\nOK\r\n" , strlen("\r\nOK\r\n") ) == 0){
             SIMstate=13;
             }    
@@ -136,7 +139,7 @@ switch(SIMstate) {
         break;
         
        
-    case (13):
+    case (14):
         break;
 }}
 

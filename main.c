@@ -7,11 +7,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <xc.h>
 #include <sys/attribs.h>     //MACROS ISRs
 #include "mcc_generated_files/mcc.h"
 #include "WS2812.h"
 #include "humidity_sensor.h"
+#include "DateTime.h"
+
 /*
  * 
  */
@@ -19,68 +22,64 @@ int main(void) {
     
     SYSTEM_Initialize();
     static plant_state p_state= OPTIMO;
+    uint16_t humidity;
+    
+    ut_tmrDelay_t timer1;   
+    timer1.startValue = 0;
+    timer1.state = 0;
     
         while(1){
+        
+     //   if (UT_delayDs(ptimer1,50)==true) {
+     //       LEDA_SetHigh(); 
+            if(IsConversionDone()==true){
+                humidity=HumidityGetValue();
+            }
+//        }
+        if (UT_delayDs(&timer1,50)==true) {
+            LEDA_SetHigh(); }
         
         if(USBGetDeviceState( )>=CONFIGURED_STATE){
         USB_Interface();
         } 
         
+        Plant_State_Color(GREEN,RED,WHITE,humidity);
+        
+        
         switch(p_state){
             case(OPTIMO):
-                Green_SetHigh(); 
-                if(HumidityGetValue()<10){
-                    p_state=SECO;
-                    break;
-                }
+                /*if(IsConversionDone()==true){
+                humidity=HumidityGetValue();}
                 else
-                    if(HumidityGetValue()>20){
-                        p_state=SATURADO;
-                        break;
-                    }
-                if(LEDA_GetValue()==1 && HumidityGetValue()<15 ){
+                    break;*/
+                p_state=Change_PlantState(OPTIMO, humidity);
+                 break;   
+                
+                if(LEDA_GetValue()==1 && humidity<15 ){
                     LEDA_SetLow();
                 }
                 break;
-            case(SECO):
                 
-                if(HumidityGetValue()>=10 && HumidityGetValue()<=20){
-                    p_state=OPTIMO;
-                    break;
-                }
-                else if(HumidityGetValue()<10){
-                        p_state=SATURADO;
-                        break;
-                    }
-                else if(HumidityGetValue()>=30 && HumidityGetValue()<=40){
-                 Yellow_SetHigh();
-                }
-                else if(HumidityGetValue()>=41){
-                 Red_SetHigh();
-                }
-                    
+            case(SECO):
+                /*
+                if(IsConversionDone()==true){
+                humidity=HumidityGetValue();}
+                else
+                    break;*/
+                p_state=Change_PlantState(SECO, humidity);
                 break;
+                
             case(SATURADO):
-                if(HumidityGetValue()>=10 && HumidityGetValue()<=20){
-                    p_state=OPTIMO;
-                    break;
-                }
-                else if(HumidityGetValue()<10){
-                    p_state=SECO;
-                    break;
-                }
-                else if(HumidityGetValue()>=6 && HumidityGetValue()<=9){
-                 Yellow_SetHigh();
-                }
-                else if(HumidityGetValue()>=0 && HumidityGetValue()<=5){
-                 Red_SetHigh();
-                }
+                /*
+                if(IsConversionDone()==true){
+                humidity=HumidityGetValue();}
+                else
+                    break;*/
+                p_state=Change_PlantState(SATURADO, humidity);
                 break;
             
+        }            
         }
-            
-        }
-    
     
         return 0;
 
