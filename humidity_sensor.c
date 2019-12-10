@@ -49,6 +49,17 @@ uint16_t  HumidityGetValue(){
 
 }
 
+/*
+uint16_t Humidity_Check(){
+            if (UT_delayDs(ptimer1,50)==true) {
+            LEDA_SetHigh(); 
+            if(IsConversionDone()==true){
+                humidity=HumidityGetValue();
+            }
+        }
+    
+}*/
+
 bool IsConversionDone(){
     switch(sens_st){
                 case(0):                   
@@ -70,11 +81,9 @@ bool IsConversionDone(){
 plant_state Change_PlantState(plant_state p_state, uint16_t humidity){
     if(p_state==OPTIMO){
                 if(humidity<10){
-                    //p_state=SATURADO;
                     return SATURADO;
                 }
                 else if(humidity>20){
-                    //p_state=SECO;
                     return SECO;
                 }
                 else
@@ -82,11 +91,9 @@ plant_state Change_PlantState(plant_state p_state, uint16_t humidity){
     }
     if(p_state==SATURADO){
                 if(humidity>=10 && humidity<=20){
-                    //p_state=OPTIMO;
                     return OPTIMO;
                 }
                 else if(humidity>30){
-                    //p_state=SECO;
                     return SECO;
                 }
                 else
@@ -94,11 +101,9 @@ plant_state Change_PlantState(plant_state p_state, uint16_t humidity){
     }
     if(p_state==SECO){
                 if(humidity>=10 && humidity<=20){
-                   // p_state=OPTIMO;
                     return OPTIMO;
                 }
                 else if(humidity<10){
-                    //p_state=SATURADO;
                     return SATURADO;
                 }
                 else

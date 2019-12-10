@@ -13,48 +13,31 @@
 #include "mcc_generated_files/mcc.h"
 #include "WS2812.h"
 #include "humidity_sensor.h"
-#include "sim.h"
+#include "DateTime.h"
+
 /*
  * 
  */
 int main(void) {
     
     SYSTEM_Initialize();
-    static volatile plant_state p_state= OPTIMO;
+    static plant_state p_state= OPTIMO;
     uint16_t humidity;
-    uint8_t rxBuffer [254];
-    uint8_t txBuffer [254];
-    uint8_t timer1;
-    uint8_t largo=100;
-    ut_tmrDelay_t* ptimer1;
-    ptimer1=&timer1;
-   // ptimer1->startValue = 0;
-    ptimer1->state = 0;
-    LEDA_SetLow();
-
+    
+    ut_tmrDelay_t timer1;   
+    timer1.startValue = 0;
+    timer1.state = 0;
     
         while(1){
         
-      //  iniciarSIM808();
-        memset(txBuffer,0,sizeof(txBuffer));
-        memset(rxBuffer,0,sizeof(rxBuffer));
-        if(USBGetDeviceState( )>=CONFIGURED_STATE){
-            if(getsUSBUSART( txBuffer, largo )!=0 ){
-			
-            	UART1_WriteBuffer ( txBuffer ,  strlen (txBuffer));
-            }
-        }
-        if (UART1_ReadBuffer ( rxBuffer , 1 ) == 0){
-            mostrar(rxBuffer);
-        }
-
-            
-        if (UT_delayDs(ptimer1,1)==true) {
-        LEDA_SetHigh(); 
+     //   if (UT_delayDs(ptimer1,50)==true) {
+     //       LEDA_SetHigh(); 
             if(IsConversionDone()==true){
-                    humidity=HumidityGetValue();
+                humidity=HumidityGetValue();
             }
-        }
+//        }
+        if (UT_delayDs(&timer1,50)==true) {
+            LEDA_SetHigh(); }
         
         if(USBGetDeviceState( )>=CONFIGURED_STATE){
         USB_Interface();
@@ -65,10 +48,10 @@ int main(void) {
         
         switch(p_state){
             case(OPTIMO):
-                if(IsConversionDone()==true){
+                /*if(IsConversionDone()==true){
                 humidity=HumidityGetValue();}
                 else
-                    break;
+                    break;*/
                 p_state=Change_PlantState(OPTIMO, humidity);
                  break;   
                 
@@ -78,19 +61,21 @@ int main(void) {
                 break;
                 
             case(SECO):
+                /*
                 if(IsConversionDone()==true){
                 humidity=HumidityGetValue();}
                 else
-                    break;
-                p_state=Change_PlantState(OPTIMO, humidity);
+                    break;*/
+                p_state=Change_PlantState(SECO, humidity);
                 break;
                 
             case(SATURADO):
+                /*
                 if(IsConversionDone()==true){
                 humidity=HumidityGetValue();}
                 else
-                    break;
-                p_state=Change_PlantState(OPTIMO, humidity);
+                    break;*/
+                p_state=Change_PlantState(SATURADO, humidity);
                 break;
             
         }            

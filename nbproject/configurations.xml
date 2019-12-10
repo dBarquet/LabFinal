@@ -36,6 +36,7 @@
       <itemPath>GPS.h</itemPath>
       <itemPath>sim.h</itemPath>
       <itemPath>WS2812.h</itemPath>
+      <itemPath>RegistroHist.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -71,6 +72,7 @@
       <itemPath>GPS.c</itemPath>
       <itemPath>sim.c</itemPath>
       <itemPath>WS2812.c</itemPath>
+      <itemPath>RegistroHist.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
