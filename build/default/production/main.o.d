@@ -21,6 +21,15 @@ mcc_generated_files/usb/usb_hal.h  \
 mcc_generated_files/usb/usb.h  \
  mcc_generated_files/adc1.h  \
 WS2812.h  \
+<<<<<<< HEAD
+ humidity_sensor.h  \
+sim.h 
+=======
 humidity_sensor.h  \
+<<<<<<< HEAD
 DateTime.h  \
 utils.h 
+=======
+DateTime.h 
+>>>>>>> 09d88f48fb5cd76dea2df371d58aa66acaef814f
+>>>>>>> 9d8dd86e6542ad71c00f54f0585942f1061ce291

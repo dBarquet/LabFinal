@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=mkdir -p
+MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -57,6 +57,7 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
+<<<<<<< HEAD
 SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/usb/usb_device_events.c mcc_generated_files/usb/usb_device.c mcc_generated_files/usb/usb_descriptors.c mcc_generated_files/usb/usb_device_cdc.c mcc_generated_files/system.c mcc_generated_files/clock.c mcc_generated_files/exceptions.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/rtcc.c mcc_generated_files/tmr2.c mcc_generated_files/adc1.c mcc_generated_files/uart1.c main.c humidity_sensor.c usb_interface.c DateTime.c GPS.c sim.c WS2812.c "../Lab1 /utils.c"
 
 # Object Files Quoted if spaced
@@ -68,6 +69,19 @@ OBJECTFILES=${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o ${OBJECTDIR
 
 # Source Files
 SOURCEFILES=mcc_generated_files/usb/usb_device_events.c mcc_generated_files/usb/usb_device.c mcc_generated_files/usb/usb_descriptors.c mcc_generated_files/usb/usb_device_cdc.c mcc_generated_files/system.c mcc_generated_files/clock.c mcc_generated_files/exceptions.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/rtcc.c mcc_generated_files/tmr2.c mcc_generated_files/adc1.c mcc_generated_files/uart1.c main.c humidity_sensor.c usb_interface.c DateTime.c GPS.c sim.c WS2812.c ../Lab1 /utils.c
+=======
+SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/usb/usb_device_events.c mcc_generated_files/usb/usb_device.c mcc_generated_files/usb/usb_descriptors.c mcc_generated_files/usb/usb_device_cdc.c mcc_generated_files/system.c mcc_generated_files/clock.c mcc_generated_files/exceptions.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/rtcc.c mcc_generated_files/tmr2.c mcc_generated_files/adc1.c mcc_generated_files/uart1.c main.c humidity_sensor.c usb_interface.c DateTime.c GPS.c sim.c WS2812.c RegistroHist.c
+
+# Object Files Quoted if spaced
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device.o ${OBJECTDIR}/mcc_generated_files/usb/usb_descriptors.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_cdc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/rtcc.o ${OBJECTDIR}/mcc_generated_files/tmr2.o ${OBJECTDIR}/mcc_generated_files/adc1.o ${OBJECTDIR}/mcc_generated_files/uart1.o ${OBJECTDIR}/main.o ${OBJECTDIR}/humidity_sensor.o ${OBJECTDIR}/usb_interface.o ${OBJECTDIR}/DateTime.o ${OBJECTDIR}/GPS.o ${OBJECTDIR}/sim.o ${OBJECTDIR}/WS2812.o ${OBJECTDIR}/RegistroHist.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_device.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_descriptors.o.d ${OBJECTDIR}/mcc_generated_files/usb/usb_device_cdc.o.d ${OBJECTDIR}/mcc_generated_files/system.o.d ${OBJECTDIR}/mcc_generated_files/clock.o.d ${OBJECTDIR}/mcc_generated_files/exceptions.o.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/rtcc.o.d ${OBJECTDIR}/mcc_generated_files/tmr2.o.d ${OBJECTDIR}/mcc_generated_files/adc1.o.d ${OBJECTDIR}/mcc_generated_files/uart1.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/humidity_sensor.o.d ${OBJECTDIR}/usb_interface.o.d ${OBJECTDIR}/DateTime.o.d ${OBJECTDIR}/GPS.o.d ${OBJECTDIR}/sim.o.d ${OBJECTDIR}/WS2812.o.d ${OBJECTDIR}/RegistroHist.o.d
+
+# Object Files
+OBJECTFILES=${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device.o ${OBJECTDIR}/mcc_generated_files/usb/usb_descriptors.o ${OBJECTDIR}/mcc_generated_files/usb/usb_device_cdc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/rtcc.o ${OBJECTDIR}/mcc_generated_files/tmr2.o ${OBJECTDIR}/mcc_generated_files/adc1.o ${OBJECTDIR}/mcc_generated_files/uart1.o ${OBJECTDIR}/main.o ${OBJECTDIR}/humidity_sensor.o ${OBJECTDIR}/usb_interface.o ${OBJECTDIR}/DateTime.o ${OBJECTDIR}/GPS.o ${OBJECTDIR}/sim.o ${OBJECTDIR}/WS2812.o ${OBJECTDIR}/RegistroHist.o
+
+# Source Files
+SOURCEFILES=mcc_generated_files/usb/usb_device_events.c mcc_generated_files/usb/usb_device.c mcc_generated_files/usb/usb_descriptors.c mcc_generated_files/usb/usb_device_cdc.c mcc_generated_files/system.c mcc_generated_files/clock.c mcc_generated_files/exceptions.c mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/rtcc.c mcc_generated_files/tmr2.c mcc_generated_files/adc1.c mcc_generated_files/uart1.c main.c humidity_sensor.c usb_interface.c DateTime.c GPS.c sim.c WS2812.c RegistroHist.c
+>>>>>>> 9d8dd86e6542ad71c00f54f0585942f1061ce291
 
 
 CFLAGS=
@@ -232,11 +246,19 @@ ${OBJECTDIR}/WS2812.o: WS2812.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/WS2812.o 
 	@${FIXDEPS} "${OBJECTDIR}/WS2812.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/WS2812.o.d" -o ${OBJECTDIR}/WS2812.o WS2812.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+<<<<<<< HEAD
 ${OBJECTDIR}/_ext/2140863699/utils.o: ../Lab1\ /utils.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2140863699" 
 	@${RM} ${OBJECTDIR}/_ext/2140863699/utils.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2140863699/utils.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/2140863699/utils.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/2140863699/utils.o.d" -o ${OBJECTDIR}/_ext/2140863699/utils.o "../Lab1 /utils.c"    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+=======
+${OBJECTDIR}/RegistroHist.o: RegistroHist.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/RegistroHist.o.d 
+	@${RM} ${OBJECTDIR}/RegistroHist.o 
+	@${FIXDEPS} "${OBJECTDIR}/RegistroHist.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/RegistroHist.o.d" -o ${OBJECTDIR}/RegistroHist.o RegistroHist.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+>>>>>>> 9d8dd86e6542ad71c00f54f0585942f1061ce291
 	
 else
 ${OBJECTDIR}/mcc_generated_files/usb/usb_device_events.o: mcc_generated_files/usb/usb_device_events.c  nbproject/Makefile-${CND_CONF}.mk
@@ -365,11 +387,19 @@ ${OBJECTDIR}/WS2812.o: WS2812.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/WS2812.o 
 	@${FIXDEPS} "${OBJECTDIR}/WS2812.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/WS2812.o.d" -o ${OBJECTDIR}/WS2812.o WS2812.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+<<<<<<< HEAD
 ${OBJECTDIR}/_ext/2140863699/utils.o: ../Lab1\ /utils.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2140863699" 
 	@${RM} ${OBJECTDIR}/_ext/2140863699/utils.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2140863699/utils.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/2140863699/utils.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/2140863699/utils.o.d" -o ${OBJECTDIR}/_ext/2140863699/utils.o "../Lab1 /utils.c"    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+=======
+${OBJECTDIR}/RegistroHist.o: RegistroHist.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/RegistroHist.o.d 
+	@${RM} ${OBJECTDIR}/RegistroHist.o 
+	@${FIXDEPS} "${OBJECTDIR}/RegistroHist.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/RegistroHist.o.d" -o ${OBJECTDIR}/RegistroHist.o RegistroHist.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+>>>>>>> 9d8dd86e6542ad71c00f54f0585942f1061ce291
 	
 endif
 
@@ -390,7 +420,7 @@ else
 dist/${CND_CONF}/${IMAGE_TYPE}/LabFinal.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
 	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/LabFinal.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml
-	${MP_CC_DIR}/xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/LabFinal.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/LabFinal.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
 
@@ -409,7 +439,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif

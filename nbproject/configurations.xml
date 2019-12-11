@@ -36,7 +36,11 @@
       <itemPath>GPS.h</itemPath>
       <itemPath>sim.h</itemPath>
       <itemPath>WS2812.h</itemPath>
+<<<<<<< HEAD
       <itemPath>../Lab1 /utils.h</itemPath>
+=======
+      <itemPath>RegistroHist.h</itemPath>
+>>>>>>> 9d8dd86e6542ad71c00f54f0585942f1061ce291
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -72,7 +76,11 @@
       <itemPath>GPS.c</itemPath>
       <itemPath>sim.c</itemPath>
       <itemPath>WS2812.c</itemPath>
+<<<<<<< HEAD
       <itemPath>../Lab1 /utils.c</itemPath>
+=======
+      <itemPath>RegistroHist.c</itemPath>
+>>>>>>> 9d8dd86e6542ad71c00f54f0585942f1061ce291
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -95,11 +103,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>snap</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.05</languageToolchainVersion>
-        <platform>4</platform>
+        <languageToolchainVersion>2.20</languageToolchainVersion>
+        <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32MM-GPM-0XX_DFP" vendor="Microchip" version="1.0.8"/>
+        <pack name="PIC32MM-GPM-0XX_DFP" vendor="Microchip" version="1.0.14"/>
       </packs>
       <compileType>
         <linkerTool>
@@ -174,6 +182,9 @@
         <property key="preprocessor-macros" value=""/>
         <property key="warning-level" value=""/>
       </C32-AS>
+      <C32-CO>
+        <property key="coverage-enable" value=""/>
+      </C32-CO>
       <C32-LD>
         <property key="additional-options-use-response-files" value="false"/>
         <property key="additional-options-write-sla" value="false"/>
