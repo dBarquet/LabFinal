@@ -211,7 +211,7 @@ void TMR2_SoftwareCounterClear(void)
 {
     tmr2_obj.count = 0; 
 }
-
+/*
 bool UT_delayDs(ut_tmrDelay_t* p_timer, uint16_t p_ds){
     switch ( p_timer->state ) {
         case (0):

@@ -22,4 +22,5 @@ mcc_generated_files/usb/usb.h  \
  mcc_generated_files/adc1.h  \
 WS2812.h  \
 humidity_sensor.h  \
-DateTime.h 
+DateTime.h  \
+utils.h 

@@ -118,22 +118,22 @@ void RGB_SetHigh(ws2812_t color){
     }    
 }
 
-void Plant_State_Color(ws2812_t Good_color,ws2812_t Bad_color,ws2812_t No_to_Bad_color,uint16_t humidity){
+void Plant_State_Color(thres_colors colors,uint16_t humidity){
     
                 if(humidity>=41){
-                RGB_SetHigh(Bad_color);
+                RGB_SetHigh(colors.Dry_color);
                 }
                 else if(humidity>=31 && humidity<=40){
-                 RGB_SetHigh(No_to_Bad_color);
+                 RGB_SetHigh(colors.Not_too_Dry_color);
                 }
                 else if(humidity>=10 && humidity<=30){
-                RGB_SetHigh(Good_color);    
+                RGB_SetHigh(colors.Opt_color);    
                 }
                 else if(humidity>=6 && humidity<=9){
-                 RGB_SetHigh(No_to_Bad_color);
+                 RGB_SetHigh(colors.Not_too_sat_color);
                 }
                 else if(humidity<=5){
-                 RGB_SetHigh(Bad_color);
+                 RGB_SetHigh(colors.Sat_color);
                 }  
     }
     

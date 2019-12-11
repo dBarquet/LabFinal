@@ -39,13 +39,32 @@ typedef struct
     uint8_t b;
 }ws2812_t;
 
+typedef struct
+{
+   ws2812_t Dry_color;
+   ws2812_t Not_too_Dry_color;
+   ws2812_t Opt_color;
+   ws2812_t Not_too_sat_color;
+   ws2812_t Sat_color;
+}thres_colors;
+
 
 extern const ws2812_t WHITE;
 extern const ws2812_t RED;
 extern const ws2812_t GREEN;
 extern const ws2812_t BLUE;
 extern const ws2812_t BLACK;
+extern const ws2812_t YELLOW;
 
+
+void WS2812_send( ws2812_t *p_leds, uint8_t p_length );
+void ApagarLEDs();
+void Green_SetHigh();
+void Red_SetHigh();
+void Yellow_SetHigh();
+void Blue_SetHigh();
+void White_SetHigh();
+void Plant_State_Color(thres_colors colors,uint16_t humidity);
 
 // *****************************************************************************
 // *****************************************************************************
@@ -101,14 +120,7 @@ extern const ws2812_t BLACK;
   @Remarks
     None.
  */
-void WS2812_send( ws2812_t *p_leds, uint8_t p_length );
-void ApagarLEDs();
-void Green_SetHigh();
-void Red_SetHigh();
-void Yellow_SetHigh();
-void Blue_SetHigh();
-void White_SetHigh();
-void Plant_State_Color(ws2812_t Good_color,ws2812_t Bad_color,ws2812_t No_to_Bad_color,uint16_t humidity);
+
 #endif /* _WS2812_H */
 
 /* *****************************************************************************

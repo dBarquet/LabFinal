@@ -78,32 +78,32 @@ bool IsConversionDone(){
 }
 
 
-plant_state Change_PlantState(plant_state p_state, uint16_t humidity){
+plant_state Change_PlantState(plant_state p_state,humidity_thresholds h_t, uint16_t humidity){
     if(p_state==OPTIMO){
-                if(humidity<10){
+                if(humidity <= h_t.t_not_too_sat){
                     return SATURADO;
                 }
-                else if(humidity>20){
+                else if(humidity>=h_t.t_not_too_dry){
                     return SECO;
                 }
                 else
                     return OPTIMO;
     }
     if(p_state==SATURADO){
-                if(humidity>=10 && humidity<=20){
+                if(humidity>h_t.t_not_too_sat && humidity<h_t.t_not_too_dry){
                     return OPTIMO;
                 }
-                else if(humidity>30){
+                else if(humidity>=h_t.t_not_too_dry){
                     return SECO;
                 }
                 else
                     return SATURADO;
     }
     if(p_state==SECO){
-                if(humidity>=10 && humidity<=20){
+                if(humidity>h_t.t_not_too_sat && humidity<h_t.t_not_too_dry){
                     return OPTIMO;
                 }
-                else if(humidity<10){
+                else if(humidity<=h_t.t_not_too_sat){
                     return SATURADO;
                 }
                 else

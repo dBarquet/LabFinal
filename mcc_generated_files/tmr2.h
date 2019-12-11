@@ -111,7 +111,7 @@ void TMR2_Initialize (void);
 
 
 
-
+/*
 typedef struct 
 {
 	 uint8_t state;
@@ -207,7 +207,7 @@ void TMR2_Counter16BitSet ( uint16_t value );
 */
 
 uint16_t TMR2_Counter16BitGet( void );
-
+/*
 bool UT_delayDs(ut_tmrDelay_t* p_timer, uint16_t p_ds);
 
 bool delayMs( uint32_t p_delay );
